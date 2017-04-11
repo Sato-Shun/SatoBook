@@ -1,0 +1,13 @@
+<p>コメントする</p>
+<%= form_for(@comment) do |f| %>
+	<div class="field">
+		<%= f.label :content %>
+		<%= f.text_field :content %>
+	</div>
+
+	<%= f.hidden_field :article_id, :value => @article.id %>
+	
+	<div class="actions">
+    	<%= f.submit %>
+ 	</div>
+<% end %>
