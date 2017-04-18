@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   post '/comments'          => 'comments#create'
   delete '/comments/:id' => 'comments#destroy', as: "destroy_comment"
   devise_for :users
-  resources :articles
+  resources :articles do
+  	resource :like, only: [:create, :destroy]
+    
+  end
   get '/users'            => 'users#index'
-  get '/users/:id'        => 'users#show'
+  get '/users/:id'        => 'users#show' , as:"user"
 end

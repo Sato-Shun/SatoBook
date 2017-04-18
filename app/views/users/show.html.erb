@@ -3,4 +3,9 @@
 <% @user.articles.each do |article| %>
 	<p>タイトル : <%= article.title %></p>
 	<p>著者 : <%= article.author %></p>
+	<% if article.liked_by?(current_user) %>
+           <td><%= link_to 'いいね解除', article_like_path(article.id), method: :delete %></td>
+        <% else %>
+          <td><%= link_to 'いいね', article_like_path(article.id), method: :post%></td>
+         <% end %>
 <% end %>

@@ -1,4 +1,4 @@
-<h1>コメント投稿</h1>
+<h2>コメント投稿</h2>
 <%= form_for(@comment) do |f| %>
 	<div class="field">
 		<%= f.label "コメント" %>
@@ -6,6 +6,7 @@
 	</div>
 
 	<%= f.hidden_field :article_id, :value => @article.id %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
 	
 	<div class="actions">
     	<%= f.submit %>

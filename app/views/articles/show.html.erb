@@ -31,5 +31,8 @@
 
 <h2>コメント一覧</h2>
 <% @article.comments.each do |comment| %>
-	<p><%= comment.content %>   <%= link_to "削除する", destroy_comment_path(comment.id), method: :delete %></p>
+	<p><%= comment.content %> <%= comment.user.email%>
+	<% if current_user.email == comment.user.email %>
+	  <%= link_to "削除する", destroy_comment_path(comment.id), method: :delete %></p>
+	<% end %>
 <% end %>

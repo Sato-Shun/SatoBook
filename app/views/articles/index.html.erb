@@ -21,9 +21,16 @@
         <td><%= article.author %></td>
         <td><%= article.user_id %></td>
         <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+       
+          <td><%= link_to 'Edit', edit_article_path(article) %></td>
+          <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       
+        <% if article.liked_by?(current_user) %>
+           <td><%= link_to 'いいね解除', article_like_path(article.id), method: :delete %></td>
+        <% else %>
+          <td><%= link_to 'いいね', article_like_path(article.id), method: :post%></td>
+         <% end %>
+      </tr>  
     <% end %>
   </tbody>
 </table>
